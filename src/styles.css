@@ -1,0 +1,306 @@
+/* Custom Global Styles for Multimedia Portfolio - Angular 22 */
+
+/* Particle canvas on Hero */
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(4, 11, 20, 0.88) 0%, rgba(5, 13, 24, 0.72) 50%, rgba(20, 157, 221, 0.25) 100%);
+  z-index: 2;
+}
+
+.hero-img-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  z-index: 1;
+  filter: brightness(0.9);
+}
+
+/* Profile image with subtle multimedia glow */
+.profile-img img {
+  border: 4px solid rgba(20, 157, 221, 0.4);
+  box-shadow: 0 0 20px rgba(20, 157, 221, 0.3);
+  transition: all 0.4s ease;
+  object-fit: cover;
+}
+
+.profile-img img:hover {
+  transform: scale(1.04);
+  border-color: #149ddd;
+  box-shadow: 0 0 30px rgba(20, 157, 221, 0.6);
+}
+
+/* Badges for skills & multimedia */
+.badge-multimedia {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(20, 157, 221, 0.12);
+  color: #149ddd;
+  border: 1px solid rgba(20, 157, 221, 0.3);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.badge-multimedia:hover {
+  background: #149ddd;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(20, 157, 221, 0.3);
+}
+
+/* Floating Audio Player Bar */
+.floating-audio-bar {
+  position: fixed;
+  bottom: 24px;
+  right: 80px;
+  background: rgba(4, 11, 20, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(20, 157, 221, 0.4);
+  border-radius: 50px;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 9998;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.floating-audio-bar button {
+  background: #149ddd;
+  border: none;
+  color: white;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.floating-audio-bar button:hover {
+  transform: scale(1.1);
+  background: #0e7eb2;
+}
+
+/* Sound Wave bars animation */
+.sound-bars {
+  display: flex;
+  align-items: flex-end;
+  height: 20px;
+  gap: 3px;
+}
+
+.sound-bars .bar {
+  width: 3px;
+  background: #149ddd;
+  border-radius: 2px;
+  height: 4px;
+  transition: height 0.15s ease;
+}
+
+.sound-bars.playing .bar:nth-child(1) { animation: soundWave 0.8s infinite ease-in-out; }
+.sound-bars.playing .bar:nth-child(2) { animation: soundWave 1.2s infinite ease-in-out; }
+.sound-bars.playing .bar:nth-child(3) { animation: soundWave 0.9s infinite ease-in-out; }
+.sound-bars.playing .bar:nth-child(4) { animation: soundWave 1.4s infinite ease-in-out; }
+.sound-bars.playing .bar:nth-child(5) { animation: soundWave 1.0s infinite ease-in-out; }
+
+@keyframes soundWave {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+/* Multimedia Lab Cards */
+.lab-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.lab-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(20, 157, 221, 0.15);
+}
+
+/* Custom Lightbox Modal */
+.custom-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 11, 20, 0.92);
+  backdrop-filter: blur(8px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.custom-modal-content {
+  background: #121d2b;
+  border: 1px solid rgba(20, 157, 221, 0.4);
+  border-radius: 16px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  animation: scaleUp 0.3s ease;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.close-modal-btn:hover {
+  background: #149ddd;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Portfolio Filters */
+.portfolio-filters {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 35px auto;
+  text-align: center;
+  background: #fff;
+  border-radius: 50px;
+  padding: 4px 10px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.portfolio-filters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #272829;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.portfolio-filters li:hover,
+.portfolio-filters li.filter-active {
+  background: #149ddd;
+  color: #fff;
+}
+
+/* Interactive cursor & glow buttons */
+.btn-multimedia-primary {
+  background: #149ddd;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(20, 157, 221, 0.4);
+}
+
+.btn-multimedia-primary:hover {
+  background: #0e7eb2;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(20, 157, 221, 0.6);
+}
+
+.btn-multimedia-outline {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  padding: 10px 26px;
+  border-radius: 50px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-multimedia-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Custom interactive video card */
+.video-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.video-container video {
+  width: 100%;
+  display: block;
+}
+
+/* Sidebar layout margin fix for Angular components */
+@media (min-width: 1200px) {
+  .main,
+  #footer,
+  .footer {
+    margin-left: 300px;
+  }
+}
+

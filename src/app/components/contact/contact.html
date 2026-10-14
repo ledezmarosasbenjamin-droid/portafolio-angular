@@ -1,0 +1,130 @@
+<section id="contact" class="contact section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Contacto Directo</h2>
+    <p>¿Tienes una propuesta de proyecto multimedia, desarrollo en Angular 22 o computación gráfica? ¡Hablemos!</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+
+      <!-- Left Column: Info Cards & Map -->
+      <div class="col-lg-5">
+        <div class="info-wrap p-4 rounded-4 shadow-sm h-100">
+          
+          <div class="info-item d-flex align-items-center mb-4">
+            <i class="bi bi-geo-alt flex-shrink-0 contact-icon me-3"></i>
+            <div>
+              <h5 class="fw-bold mb-1">Ubicación</h5>
+              <p class="text-muted mb-0">{{ portfolioService.personalInfo.city }}</p>
+            </div>
+          </div>
+
+          <div class="info-item d-flex align-items-center mb-4">
+            <i class="bi bi-telephone flex-shrink-0 contact-icon me-3"></i>
+            <div>
+              <h5 class="fw-bold mb-1">Teléfono / WhatsApp</h5>
+              <p class="text-muted mb-0">{{ portfolioService.personalInfo.phone }}</p>
+            </div>
+          </div>
+
+          <div class="info-item d-flex align-items-center mb-4">
+            <i class="bi bi-envelope flex-shrink-0 contact-icon me-3"></i>
+            <div>
+              <h5 class="fw-bold mb-1">Correo Electrónico</h5>
+              <p class="text-muted mb-0">{{ portfolioService.personalInfo.email }}</p>
+            </div>
+          </div>
+
+          <div class="info-item d-flex align-items-center mb-4">
+            <i class="bi bi-clock flex-shrink-0 contact-icon me-3"></i>
+            <div>
+              <h5 class="fw-bold mb-1">Disponibilidad</h5>
+              <p class="text-muted mb-0">Lunes a Viernes &bull; 08:00 - 19:00 (GMT-4)</p>
+            </div>
+          </div>
+
+          <!-- Embedded Map -->
+          <div class="map-container rounded-3 overflow-hidden shadow-sm mt-3">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122485.49818816827!2d-66.15700076793617!3d-17.39380079646453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93e373f7e8b5e6f5%3A0x7e3c3e3a4e3d3c3c!2sCochabamba%2C%20Bolivia!5e0!3m2!1ses!2sbo!4v1710000000000!5m2!1ses!2sbo" 
+                    width="100%" 
+                    height="200" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicación en Google Maps - Cochabamba">
+            </iframe>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Form -->
+      <div class="col-lg-7">
+        <div class="contact-form-box p-4 p-md-5 rounded-4 shadow-sm bg-white border">
+          <h4 class="fw-bold mb-3">Envíame un Mensaje</h4>
+
+          @if (isSubmitted()) {
+            <div class="alert alert-success d-flex align-items-center gap-2 mb-4" role="alert">
+              <i class="bi bi-check-circle-fill fs-4"></i>
+              <div>
+                <strong>¡Mensaje enviado con éxito!</strong> Me pondré en contacto contigo a la brevedad.
+              </div>
+            </div>
+          }
+
+          <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <div class="row gy-3">
+              
+              <div class="col-md-6">
+                <label for="name" class="form-label small fw-semibold">Tu Nombre <span class="text-danger">*</span></label>
+                <input type="text" id="name" name="name" [(ngModel)]="formData.name" required class="form-control" placeholder="Ej. Juan Pérez">
+              </div>
+
+              <div class="col-md-6">
+                <label for="email" class="form-label small fw-semibold">Tu Correo Electrónico <span class="text-danger">*</span></label>
+                <input type="email" id="email" name="email" [(ngModel)]="formData.email" required email class="form-control" placeholder="juan@ejemplo.com">
+              </div>
+
+              <div class="col-md-6">
+                <label for="subject" class="form-label small fw-semibold">Asunto</label>
+                <input type="text" id="subject" name="subject" [(ngModel)]="formData.subject" class="form-control" placeholder="Propuesta de proyecto">
+              </div>
+
+              <div class="col-md-6">
+                <label for="service" class="form-label small fw-semibold">Servicio de Interés</label>
+                <select id="service" name="service" [(ngModel)]="formData.service" class="form-select">
+                  <option value="Desarrollo Web & Angular 22">Desarrollo Web & Angular 22</option>
+                  <option value="Producción Audiovisual & Video">Producción Audiovisual & Video</option>
+                  <option value="Modelado 3D & WebGL">Modelado 3D & WebGL</option>
+                  <option value="Diseño UI/UX">Diseño UI/UX</option>
+                  <option value="Diseño Sonoro">Diseño Sonoro & Audio</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label for="message" class="form-label small fw-semibold">Mensaje o Detalle del Proyecto <span class="text-danger">*</span></label>
+                <textarea id="message" name="message" rows="5" [(ngModel)]="formData.message" required class="form-control" placeholder="Cuéntame sobre tu proyecto o consulta..."></textarea>
+              </div>
+
+              <div class="col-12 text-center mt-4">
+                <button type="submit" [disabled]="!contactForm.form.valid || isSubmitting()" class="btn btn-multimedia-primary px-5 py-2">
+                  @if (isSubmitting()) {
+                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    <span>Enviando mensaje...</span>
+                  } @else {
+                    <i class="bi bi-send-fill me-2"></i>
+                    <span>Enviar Mensaje</span>
+                  }
+                </button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

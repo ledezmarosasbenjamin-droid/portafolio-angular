@@ -1,0 +1,107 @@
+<section id="portfolio" class="portfolio section light-background">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Portafolio Multimedia</h2>
+    <p>Colección selecta de proyectos que abarcan dirección audiovisual, desarrollo con Angular 22, computación gráfica 3D y producción de audio.</p>
+  </div>
+
+  <div class="container">
+    <!-- Filter Buttons -->
+    <div class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+      <ul class="portfolio-filters">
+        <li [class.filter-active]="activeFilter() === 'all'" (click)="setFilter('all')">Todos</li>
+        <li [class.filter-active]="activeFilter() === 'video'" (click)="setFilter('video')">Video & Multimedia</li>
+        <li [class.filter-active]="activeFilter() === 'angular'" (click)="setFilter('angular')">Angular 22 & Web</li>
+        <li [class.filter-active]="activeFilter() === 'graphics'" (click)="setFilter('graphics')">3D & Gráficos</li>
+        <li [class.filter-active]="activeFilter() === 'design'" (click)="setFilter('design')">Diseño & Audio</li>
+      </ul>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="row gy-4 portfolio-grid" data-aos="fade-up" data-aos-delay="200">
+      @for (item of filteredItems(); track item.id) {
+        <div class="col-lg-4 col-md-6 portfolio-item">
+          <div class="portfolio-card shadow-sm h-100">
+            
+            <div class="portfolio-img-box position-relative overflow-hidden">
+              <img [src]="item.image" [alt]="item.title" class="img-fluid portfolio-img">
+              
+              @if (item.isPersonalPhoto) {
+                <span class="badge-personal-highlight">
+                  <i class="bi bi-star-fill text-warning"></i> Foto Personal
+                </span>
+              }
+
+              <div class="portfolio-actions-overlay d-flex align-items-center justify-content-center gap-3">
+                <button class="action-btn" title="Ver Fotografía / Preview" (click)="openModal(item, $event)">
+                  <i class="bi bi-zoom-in"></i>
+                </button>
+                <button class="action-btn" title="Detalles del Proyecto" (click)="openModal(item, $event)">
+                  <i class="bi bi-info-circle"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="portfolio-info p-3">
+              <span class="category-tag text-uppercase fw-semibold">{{ item.categoryLabel }}</span>
+              <h4 class="mt-1 mb-2">{{ item.title }}</h4>
+              <p class="text-muted small mb-2">{{ item.shortDesc }}</p>
+
+              <div class="d-flex flex-wrap gap-1 mt-2">
+                @for (tech of item.technologies.slice(0, 3); track tech) {
+                  <span class="badge bg-secondary-subtle text-secondary-emphasis small">{{ tech }}</span>
+                }
+              </div>
+            </div>
+
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- MODAL / LIGHTBOX DETAILS -->
+  @if (portfolioService.selectedProject()) {
+    <div class="custom-modal-backdrop" (click)="closeModal()">
+      <div class="custom-modal-content p-4" (click)="$event.stopPropagation()">
+        <button class="close-modal-btn" (click)="closeModal()" aria-label="Cerrar modal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+
+        <div class="row gy-4 align-items-center">
+          <div class="col-md-6 text-center">
+            <img [src]="portfolioService.selectedProject()?.image" 
+                 [alt]="portfolioService.selectedProject()?.title" 
+                 class="img-fluid rounded-3 modal-display-img shadow">
+          </div>
+
+          <div class="col-md-6">
+            <span class="badge bg-info text-dark mb-2 text-uppercase fw-bold">{{ portfolioService.selectedProject()?.categoryLabel }}</span>
+            <h3 class="fw-bold mb-3">{{ portfolioService.selectedProject()?.title }}</h3>
+            
+            <p class="text-light-50">{{ portfolioService.selectedProject()?.fullDesc }}</p>
+
+            <ul class="list-unstyled detail-modal-list my-3 small">
+              <li><strong>Cliente / Contexto:</strong> {{ portfolioService.selectedProject()?.client }}</li>
+              <li><strong>Fecha:</strong> {{ portfolioService.selectedProject()?.date }}</li>
+              <li><strong>Categoría:</strong> {{ portfolioService.selectedProject()?.categoryLabel }}</li>
+            </ul>
+
+            <div class="mb-3">
+              <strong class="d-block mb-1 small text-white-50">Tecnologías aplicadas:</strong>
+              <div class="d-flex flex-wrap gap-1">
+                @for (tech of portfolioService.selectedProject()?.technologies; track tech) {
+                  <span class="badge bg-primary-subtle text-primary border border-primary-subtle">{{ tech }}</span>
+                }
+              </div>
+            </div>
+
+            <button class="btn btn-sm btn-outline-info rounded-pill px-4 mt-2" (click)="closeModal()">
+              <i class="bi bi-check-lg me-1"></i> Cerrar Vista
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</section>

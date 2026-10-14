@@ -1,0 +1,44 @@
+<aside class="floating-audio-widget" [class.minimized]="isMinimized()" aria-label="Reproductor de audio ambiental">
+  <!-- Minimized circular toggle button -->
+  @if (isMinimized()) {
+    <button class="btn btn-audio-mini" (click)="toggleMinimize()" title="Expandir reproductor Lo-Fi" aria-label="Expandir reproductor">
+      <i class="bi" [class.bi-music-note-beamed]="!audioService.isPlaying()" [class.bi-soundwave]="audioService.isPlaying()"></i>
+    </button>
+  } @else {
+    <div class="audio-panel d-flex align-items-center gap-3">
+      <!-- Play / Pause button -->
+      <button class="btn btn-audio-play" (click)="audioService.togglePlay()" [title]="audioService.isPlaying() ? 'Pausar' : 'Reproducir'">
+        <i class="bi" [class.bi-play-fill]="!audioService.isPlaying()" [class.bi-pause-fill]="audioService.isPlaying()"></i>
+      </button>
+
+      <!-- Track info & Equalizer bars -->
+      <div class="track-info">
+        <div class="d-flex align-items-center gap-2">
+          <span class="track-title small fw-semibold text-truncate">{{ audioService.currentTrack() }}</span>
+          <div class="sound-bars" [class.playing]="audioService.isPlaying()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+        <span class="status-text small">{{ audioService.isPlaying() ? 'Reproduciendo en tiempo real (Web Audio API)' : 'Audio en pausa' }}</span>
+      </div>
+
+      <!-- Volume slider -->
+      <div class="volume-box d-none d-sm-flex align-items-center gap-1">
+        <i class="bi bi-volume-up text-white-50 small"></i>
+        <input type="range" class="form-range volume-slider" min="0" max="1" step="0.05"
+               [value]="audioService.volume()"
+               (input)="onVolumeChange($event)"
+               aria-label="Control de volumen">
+      </div>
+
+      <!-- Minimize button -->
+      <button class="btn btn-audio-close" (click)="toggleMinimize()" title="Minimizar">
+        <i class="bi bi-chevron-down"></i>
+      </button>
+    </div>
+  }
+</aside>

@@ -1,0 +1,49 @@
+<section id="skills" class="skills section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Habilidades Multimedia</h2>
+    <p>Conjunto de competencias técnicas integrando programación frontend en Angular 22, computación gráfica, producción de video y diseño interactivo.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row skills-content gy-4">
+
+      <div class="col-lg-6">
+        @for (skill of skillsCol1; track skill.name) {
+          <div class="progress-box mb-4" (mouseenter)="onSkillHover()">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="skill-name fw-semibold">
+                <i class="bi" [class]="skill.icon + ' text-primary me-2'"></i>{{ skill.name }}
+              </span>
+              <span class="skill-percentage fw-bold text-primary">{{ skill.percentage }}%</span>
+            </div>
+            <div class="progress" role="progressbar" [attr.aria-valuenow]="skill.percentage" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-striped progress-bar-animated"
+                   [style.width]="animated() ? skill.percentage + '%' : '0%'"></div>
+            </div>
+            <span class="skill-category text-muted small">{{ skill.category }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="col-lg-6">
+        @for (skill of skillsCol2; track skill.name) {
+          <div class="progress-box mb-4" (mouseenter)="onSkillHover()">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="skill-name fw-semibold">
+                <i class="bi" [class]="skill.icon + ' text-primary me-2'"></i>{{ skill.name }}
+              </span>
+              <span class="skill-percentage fw-bold text-primary">{{ skill.percentage }}%</span>
+            </div>
+            <div class="progress" role="progressbar" [attr.aria-valuenow]="skill.percentage" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                   [style.width]="animated() ? skill.percentage + '%' : '0%'"></div>
+            </div>
+            <span class="skill-category text-muted small">{{ skill.category }}</span>
+          </div>
+        }
+      </div>
+
+    </div>
+  </div>
+</section>

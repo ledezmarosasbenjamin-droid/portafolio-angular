@@ -1,0 +1,36 @@
+.progress-box {
+  background: #ffffff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.progress-box:hover {
+  transform: translateX(6px);
+  border-color: rgba(20, 157, 221, 0.3);
+  box-shadow: 0 6px 20px rgba(20, 157, 221, 0.1);
+}
+
+.progress {
+  height: 10px;
+  background-color: #e9ecef;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 8px 0 4px 0;
+}
+
+.progress-bar {
+  background-color: #149ddd;
+  transition: width 1.2s cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+
+.skill-name {
+  font-size: 0.95rem;
+  color: #050d18;
+}
+
+.skill-category {
+  font-size: 0.8rem;
+}

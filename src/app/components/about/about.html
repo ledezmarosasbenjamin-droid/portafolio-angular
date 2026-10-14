@@ -1,0 +1,78 @@
+<section id="about" class="about section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Sobre Mí</h2>
+    <p>Perfil profesional, pasión por el desarrollo multimedia, diseño interactivo y tecnologías web modernas.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4 justify-content-center align-items-center">
+      
+      <!-- Personal Photo with stylized card (Cuerpo Completo) -->
+      <div class="col-lg-5 text-center">
+        <div class="about-img-wrapper position-relative mx-auto">
+          <img [src]="portfolioService.personalInfo.profileImg" 
+               [alt]="portfolioService.personalInfo.name" 
+               class="img-fluid rounded-4 shadow-lg personal-portrait">
+          
+          <div class="experience-floating-badge" (click)="onBadgeClick()">
+            <span class="badge-number">Jr</span>
+            <span class="badge-label">Desarrollador<br>Web & Redes</span>
+          </div>
+
+          <div class="tech-floating-tag">
+            <i class="bi bi-mortarboard-fill text-primary"></i> UNIFRANZ
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio and details -->
+      <div class="col-lg-7 content">
+        <h3 class="fw-bold mb-2 text-primary-emphasis">
+          {{ portfolioService.personalInfo.role }}
+        </h3>
+        <h5 class="text-secondary fw-semibold mb-3">
+          {{ portfolioService.personalInfo.subRole }}
+        </h5>
+        
+        <p class="fst-italic py-2 text-muted fs-5">
+          "{{ portfolioService.personalInfo.aboutParagraph1 }}"
+        </p>
+
+        <div class="row py-3">
+          <div class="col-lg-6">
+            <ul class="list-unstyled detail-list">
+              <li><i class="bi bi-chevron-right text-primary"></i> <strong>Cumpleaños:</strong> <span>{{ portfolioService.personalInfo.birthday }}</span></li>
+              <li><i class="bi bi-chevron-right text-primary"></i> <strong>GitHub / Web:</strong> <a [href]="portfolioService.personalInfo.website" target="_blank" class="text-decoration-none">{{ portfolioService.personalInfo.website }}</a></li>
+              <li><i class="bi bi-chevron-right text-primary"></i> <strong>Teléfono:</strong> <span>{{ portfolioService.personalInfo.phone }}</span></li>
+              <li><i class="bi bi-chevron-right text-primary"></i> <strong>Ciudad:</strong> <span>{{ portfolioService.personalInfo.city }}</span></li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <ul class="list-unstyled detail-list">
+              <li><i class="bi bi-chevron-right text-primary"></i> <strong>Edad:</strong> <span>{{ portfolioService.personalInfo.age }} años</span></li>
+              <li><i class="bi bi-chevron-right text-primary"></i> <strong>Grado:</strong> <span>{{ portfolioService.personalInfo.degree }}</span></li>
+              <li><i class="bi bi-chevron-right text-primary"></i> <strong>Universidad:</strong> <span>{{ portfolioService.personalInfo.university }}</span></li>
+              <li><i class="bi bi-chevron-right text-primary"></i> <strong>Email:</strong> <span>{{ portfolioService.personalInfo.email }}</span></li>
+              <li><i class="bi bi-chevron-right text-primary"></i> <strong>Disponibilidad:</strong> <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">{{ portfolioService.personalInfo.freelance }}</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="py-2">
+          {{ portfolioService.personalInfo.aboutParagraph2 }}
+        </p>
+
+        <!-- Focus Pills -->
+        <div class="d-flex flex-wrap gap-2 pt-2">
+          <span class="badge-multimedia" (click)="onBadgeClick()"><i class="bi bi-code-slash"></i> Desarrollo Web</span>
+          <span class="badge-multimedia" (click)="onBadgeClick()"><i class="bi bi-hdd-network"></i> Redes & Conectividad</span>
+          <span class="badge-multimedia" (click)="onBadgeClick()"><i class="bi bi-lightning-charge"></i> Angular 22 & TypeScript</span>
+          <span class="badge-multimedia" (click)="onBadgeClick()"><i class="bi bi-universal-access"></i> Inclusión Digital</span>
+          <span class="badge-multimedia" (click)="onBadgeClick()"><i class="bi bi-mortarboard"></i> UNIFRANZ</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

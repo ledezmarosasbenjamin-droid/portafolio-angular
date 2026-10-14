@@ -1,0 +1,67 @@
+<section id="hero" class="hero section dark-background position-relative overflow-hidden" 
+         (mousemove)="onMouseMove($event)" 
+         (mouseleave)="onMouseLeave()">
+  
+  <!-- Interactive Canvas Particles -->
+  <canvas #particleCanvas class="hero-canvas"></canvas>
+
+  <!-- Ambient Background Backdrop with Subtle Blur -->
+  <div class="hero-ambient-bg"></div>
+
+  <div class="container hero-container position-relative text-white py-4" data-aos="fade-up" data-aos-delay="100">
+    <div class="row align-items-center gy-4">
+      
+      <!-- Left Column: Personal Presentation & Details -->
+      <div class="col-lg-7 col-md-12">
+        <div class="hero-badge-pill mb-3">
+          <i class="bi bi-mortarboard-fill text-info me-2"></i> {{ portfolioService.personalInfo.university }} &bull; {{ portfolioService.personalInfo.city }}
+        </div>
+
+        <h1 class="hero-name display-4 fw-bold mb-2">{{ portfolioService.personalInfo.name }}</h1>
+
+        <p class="hero-typed-lead fs-3 mb-3">
+          Soy <span class="typed-text text-info fw-semibold">{{ typedText() }}</span>
+          <span class="typed-cursor">|</span>
+        </p>
+
+        <p class="hero-description lead mb-4 text-light-50 max-w-600">
+          {{ portfolioService.personalInfo.aboutParagraph1 }}
+        </p>
+
+        <div class="hero-meta-badges d-flex flex-wrap gap-2 align-items-center">
+          <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill">
+            <i class="bi bi-check-circle-fill me-1"></i> {{ portfolioService.personalInfo.freelance }}
+          </span>
+          <span class="badge bg-info-subtle text-info border border-info-subtle px-3 py-2 rounded-pill">
+            <i class="bi bi-geo-alt-fill me-1"></i> {{ portfolioService.personalInfo.city }}
+          </span>
+          <a [href]="portfolioService.personalInfo.website" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-light rounded-pill px-3 py-2 d-inline-flex align-items-center gap-2">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+          <a [href]="'mailto:' + portfolioService.personalInfo.email" class="btn btn-sm btn-outline-info rounded-pill px-3 py-2 d-inline-flex align-items-center gap-2">
+            <i class="bi bi-envelope"></i> {{ portfolioService.personalInfo.email }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Full Body Photo Showcase (Cuerpo Completo) -->
+      <div class="col-lg-5 col-md-12 text-center">
+        <div class="hero-fullbody-frame mx-auto">
+          <img [src]="portfolioService.personalInfo.heroBgImg" 
+               [alt]="portfolioService.personalInfo.name + ' - Cuerpo Completo'" 
+               class="hero-fullbody-img" 
+               loading="eager">
+          <div class="fullbody-caption mt-2">
+            <span class="small text-white-50"><i class="bi bi-camera-fill me-1"></i> {{ portfolioService.personalInfo.name }}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <a href="#about" (click)="navigateTo('about')" class="scroll-down-arrow" aria-label="Ir a la sección Sobre Mí">
+    <i class="bi bi-chevron-double-down"></i>
+  </a>
+</section>

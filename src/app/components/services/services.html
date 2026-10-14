@@ -1,0 +1,25 @@
+<section id="services" class="services section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Servicios Multimedia</h2>
+    <p>Soluciones integradas para proyectos digitales que requieren alta calidad visual, interactividad y tecnologías web de punta.</p>
+  </div>
+
+  <div class="container">
+    <div class="row gy-4">
+      @for (service of services; track service.title) {
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-item d-flex flex-column h-100" (click)="onServiceClick()">
+            <div class="icon flex-shrink-0 mb-3">
+              <i class="bi" [class]="service.icon"></i>
+            </div>
+            <div>
+              <h4 class="title fw-bold">{{ service.title }}</h4>
+              <p class="description text-muted">{{ service.desc }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

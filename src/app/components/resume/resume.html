@@ -1,0 +1,71 @@
+<section id="resume" class="resume section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Currículum Vitae</h2>
+    <p>Formación académica en la Universidad UNIFRANZ, especialidad en desarrollo web, redes y pasión por el software inclusivo.</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+
+      <!-- Col 1: Summary & Education -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="resume-title">Perfil Resumen</h3>
+        <div class="resume-item pb-0" (click)="onItemClick()">
+          <h4>{{ portfolioService.personalInfo.name }}</h4>
+          <p><em>{{ portfolioService.personalInfo.aboutParagraph1 }}</em></p>
+          <ul>
+            <li><strong>Ciudad:</strong> {{ portfolioService.personalInfo.city }}</li>
+            <li><strong>Teléfono:</strong> {{ portfolioService.personalInfo.phone }}</li>
+            <li><strong>Email:</strong> {{ portfolioService.personalInfo.email }}</li>
+            <li><strong>GitHub:</strong> <a [href]="portfolioService.personalInfo.website" target="_blank">{{ portfolioService.personalInfo.website }}</a></li>
+          </ul>
+        </div>
+
+        <h3 class="resume-title mt-4">Educación & Formación</h3>
+        <div class="resume-item" (click)="onItemClick()">
+          <h4>Grado Universitario</h4>
+          <h5>2022 - Presente</h5>
+          <p><em>{{ portfolioService.personalInfo.university }} &bull; Cochabamba</em></p>
+          <p>Formación universitaria orientada a la ingeniería y ciencias computacionales, metodologías ágiles, bases de datos y desarrollo de aplicaciones web escalables.</p>
+        </div>
+
+        <div class="resume-item" (click)="onItemClick()">
+          <h4>Materia: Programación Gráfica y Multimedia I</h4>
+          <h5>2026</h5>
+          <p><em>{{ portfolioService.personalInfo.university }}</em></p>
+          <p>Implementación práctica de computación gráfica, entornos interactivos en Canvas, procesamiento de señales y desarrollo con Angular 22.</p>
+        </div>
+      </div>
+
+      <!-- Col 2: Experience -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="resume-title">Especialidad & Experiencia</h3>
+
+        <div class="resume-item" (click)="onItemClick()">
+          <h4>Desarrollador Junior & Especialista Web</h4>
+          <h5>Actualidad</h5>
+          <p><em>Desarrollo de Software & Proyectos Académicos</em></p>
+          <ul>
+            <li>Construcción de aplicaciones web interactivas con Angular, TypeScript y maquetación responsive.</li>
+            <li>Configuración de arquitecturas de red, protocolos de comunicación y servicios web.</li>
+            <li>Promoción de prácticas de inclusión digital y accesibilidad web para diferentes perfiles de usuario.</li>
+            <li>Control de versiones y gestión de código colaborativo mediante Git y GitHub.</li>
+          </ul>
+        </div>
+
+        <div class="resume-item" (click)="onItemClick()">
+          <h4>Redes & Tecnologías de Conectividad</h4>
+          <h5>2023 - 2025</h5>
+          <p><em>Proyectos de Infraestructura & Soporte</em></p>
+          <ul>
+            <li>Diagnóstico, administración y cableado estructurado de redes LAN/WAN.</li>
+            <li>Configuración de switches, routers y asignación de esquemas de direccionamiento IP.</li>
+            <li>Seguridad informática básica y optimización de rendimiento de red.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

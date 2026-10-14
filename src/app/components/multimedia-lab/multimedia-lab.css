@@ -1,0 +1,83 @@
+.dark-card {
+  background: #09131f;
+  border: 1px solid rgba(20, 157, 221, 0.25);
+  color: #fff;
+}
+
+.canvas-screen-wrapper {
+  background: #040911;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(20, 157, 221, 0.2);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.visualizer-canvas {
+  display: block;
+  background: transparent;
+}
+
+.canvas-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(20, 157, 221, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(20, 157, 221, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.canvas-scanline-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+.custom-slider {
+  width: 110px;
+}
+
+.video-preview-box {
+  height: 290px;
+  background: #000;
+}
+
+.video-thumbnail {
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(0.85);
+  transition: transform 0.5s ease;
+}
+
+.video-preview-box:hover .video-thumbnail {
+  transform: scale(1.03);
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.btn-play-central {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #149ddd;
+  color: #fff;
+  border: none;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(20, 157, 221, 0.7);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-play-central:hover {
+  transform: scale(1.15);
+  background: #00e676;
+  color: #040b14;
+}

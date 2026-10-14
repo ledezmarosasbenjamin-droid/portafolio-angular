@@ -1,0 +1,44 @@
+<header id="header" class="header dark-background d-flex flex-column" [class.header-show]="portfolioService.mobileNavOpen()">
+  <i class="header-toggle d-xl-none bi" 
+     [class.bi-list]="!portfolioService.mobileNavOpen()" 
+     [class.bi-x]="portfolioService.mobileNavOpen()" 
+     (click)="toggleMobileMenu()"
+     role="button"
+     tabindex="0"
+     aria-label="Abrir menú de navegación"></i>
+
+  <div class="profile-img position-relative text-center mx-auto my-3">
+    <img [src]="portfolioService.personalInfo.profileImg" 
+         [alt]="portfolioService.personalInfo.name" 
+         class="img-fluid rounded-circle profile-avatar">
+    <span class="online-pulse" title="Disponible para proyectos multimedia"></span>
+  </div>
+
+  <a href="#hero" (click)="scrollTo('hero', $event)" class="logo d-flex align-items-center justify-content-center text-decoration-none">
+    <h1 class="sitename">{{ portfolioService.personalInfo.name }}</h1>
+  </a>
+  <p class="text-center text-muted small px-3 mb-2">{{ portfolioService.personalInfo.role }}</p>
+
+  <div class="social-links text-center mb-3">
+    <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon"><i class="bi bi-github"></i></a>
+    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-icon"><i class="bi bi-linkedin"></i></a>
+    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram" class="social-icon"><i class="bi bi-instagram"></i></a>
+    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" title="YouTube" class="social-icon"><i class="bi bi-youtube"></i></a>
+  </div>
+
+  <nav id="navmenu" class="navmenu">
+    <ul>
+      @for (item of portfolioService.navItems; track item.id) {
+        <li>
+          <a [href]="'#' + item.id" 
+             [class.active]="portfolioService.activeSection() === item.id" 
+             (click)="scrollTo(item.id, $event)">
+            <i class="bi" [class]="item.icon + ' navicon'"></i>
+            <span>{{ item.label }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+
+</header>

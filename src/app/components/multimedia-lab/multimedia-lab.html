@@ -1,0 +1,128 @@
+<section id="multimedia-lab" class="multimedia-lab section light-background">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Laboratorio Interactivo de Multimedia</h2>
+    <p>Módulo de experimentación gráfica y síntesis sonora en tiempo real desarrollado para la materia de Programación Gráfica y Multimedia I.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+
+      <!-- CARD 1: Audio Visualizer FFT & Synthesizer -->
+      <div class="col-lg-6">
+        <div class="lab-card dark-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h4 class="fw-bold text-white mb-0"><i class="bi bi-soundwave text-info me-2"></i>Visualizador de Audio & Sintetizador</h4>
+              <span class="small text-white-50">Web Audio API &bull; AnalyserNode FFT</span>
+            </div>
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-outline-info" [class.active]="visualizerMode() === 'bars'" (click)="setVisualizerMode('bars')">Barras</button>
+              <button class="btn btn-outline-info" [class.active]="visualizerMode() === 'wave'" (click)="setVisualizerMode('wave')">Onda</button>
+            </div>
+          </div>
+
+          <!-- Canvas Screen -->
+          <div class="canvas-screen-wrapper position-relative mb-3">
+            <canvas #visualizerCanvas width="520" height="200" class="w-100 visualizer-canvas"></canvas>
+            <div class="canvas-grid-overlay"></div>
+          </div>
+
+          <!-- Controls -->
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 pt-2 border-top border-secondary-subtle">
+            <button class="btn btn-sm btn-info rounded-pill px-3 fw-semibold d-flex align-items-center gap-2"
+                    (click)="audioService.togglePlay()">
+              <i class="bi" [class.bi-play-fill]="!audioService.isPlaying()" [class.bi-pause-fill]="audioService.isPlaying()"></i>
+              <span>{{ audioService.isPlaying() ? 'Pausar Síntesis' : 'Iniciar Síntesis Sonora' }}</span>
+            </button>
+
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-volume-up text-white-50"></i>
+              <input type="range" class="form-range custom-slider" min="0" max="1" step="0.05"
+                     [value]="audioService.volume()"
+                     (input)="audioService.setVolume(+$any($event.target).value)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: Mathematical Orbital Particles (Lissajous) -->
+      <div class="col-lg-6">
+        <div class="lab-card dark-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h4 class="fw-bold text-white mb-0"><i class="bi bi-braces-asterisk text-warning me-2"></i>Curvas Armónicas de Lissajous</h4>
+              <span class="small text-white-50">Computación Gráfica &bull; Movimiento Trigonométrico</span>
+            </div>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Tema: {{ colorTheme() | uppercase }}
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                <li><button class="dropdown-item" (click)="setTheme('cyberpunk')">Cyberpunk</button></li>
+                <li><button class="dropdown-item" (click)="setTheme('ocean')">Ocean Blue</button></li>
+                <li><button class="dropdown-item" (click)="setTheme('neon')">Neon Matrix</button></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Canvas Screen -->
+          <div class="canvas-screen-wrapper position-relative mb-3">
+            <canvas #mathCanvas width="520" height="200" class="w-100 visualizer-canvas"></canvas>
+            <div class="canvas-scanline-overlay"></div>
+          </div>
+
+          <!-- Description and Formula -->
+          <div class="d-flex align-items-center justify-content-between pt-2 border-top border-secondary-subtle text-white-50 small">
+            <span><code>x = cos(2t + φ) &bull; r</code></span>
+            <span><code>y = sin(3t + φ) &bull; r</code></span>
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle">60 FPS Render</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3: Multimedia Video Showcase Player -->
+      <div class="col-12 mt-4">
+        <div class="lab-card">
+          <div class="row align-items-center gy-4">
+            <div class="col-lg-6">
+              <div class="video-preview-box position-relative rounded-4 overflow-hidden shadow">
+                <img [src]="'assets/img/personal/foto-sentado.jpg'" alt="Video Demoreel Preview" class="img-fluid w-100 video-thumbnail">
+                <div class="video-overlay d-flex flex-column justify-content-between p-3">
+                  <span class="badge bg-danger text-white align-self-start"><i class="bi bi-broadcast"></i> DEMOREEL 4K</span>
+                  <button class="btn btn-play-central mx-auto my-auto" (click)="toggleVideoPlay()">
+                    <i class="bi" [class.bi-play-fill]="!isVideoPlaying()" [class.bi-pause-fill]="isVideoPlaying()"></i>
+                  </button>
+                  <div class="video-controls-bottom d-flex align-items-center justify-content-between text-white small">
+                    <span>01:45 / 03:20</span>
+                    <div class="progress flex-grow-1 mx-3" style="height: 6px;">
+                      <div class="progress-bar bg-info" [style.width]="videoProgress() + '%'"></div>
+                    </div>
+                    <span>1080p 60fps</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <span class="badge-multimedia mb-2"><i class="bi bi-camera-video"></i> Producción Audiovisual</span>
+              <h3 class="fw-bold mb-3">Showcase de Video y Animación Motion</h3>
+              <p class="text-muted">
+                Demostración integral de técnicas avanzadas de montaje, corrección de color cinemática (LUTs y curvas), sincronización rítmica musical y exportación en formatos de alta fidelidad.
+              </p>
+              <ul class="list-unstyled mb-4">
+                <li class="py-1"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Cámara y Composición:</strong> Encuadre con regla de tercios y profundidad focal.</li>
+                <li class="py-1"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Color Grading:</strong> Perfil Logarítmico a Rec.709 con etalonaje personalizado.</li>
+                <li class="py-1"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Diseño Sonoro:</strong> Mezcla estéreo espacial con compresión multibanda.</li>
+              </ul>
+              <button class="btn btn-outline-primary rounded-pill px-4" (click)="toggleVideoPlay()">
+                <i class="bi bi-play-circle me-1"></i> {{ isVideoPlaying() ? 'Detener Reproducción' : 'Ver Demoreel Completo' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

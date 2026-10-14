@@ -1,0 +1,17 @@
+<section id="stats" class="stats section light-background">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+      @for (stat of stats(); track stat.label) {
+        <div class="col-lg-3 col-md-6">
+          <div class="stats-item d-flex align-items-center" (click)="triggerStatSound()">
+            <i class="bi" [class]="stat.icon"></i>
+            <div>
+              <span class="purecounter">{{ stat.current }}{{ stat.suffix }}</span>
+              <p><strong>{{ stat.label }}</strong> <span class="d-block text-muted small">{{ stat.sublabel }}</span></p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
